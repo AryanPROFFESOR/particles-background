@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Particle Background</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+  <script>
+    tsParticles.load("tsparticles", {
+      background: {
+        color: {
+          value: "#0d0d0d"
+        }
+      },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "trail"
+          },
+          onClick: {
+            enable: true,
+            mode: "push"
+          },
+          resize: true
+        },
+        modes: {
+          trail: {
+            delay: 0.1,
+            quantity: 1,
+            particles: {
+              color: { value: ["#00ffe7", "#00bfff", "#ff4fe2"] },
+              move: {
+                speed: 3,
+                direction: "none",
+                outMode: "bounce"
+              },
+              size: { value: 3 },
+              opacity: { value: 1 }
+            }
+          },
+          push: { quantity: 4 }
+        }
+      },
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            area: 1000
+          }
+        },
+        color: {
+          value: ["#00ffe7", "#00bfff", "#ff4fe2"]
+        },
+        shape: {
+          type: "circle"
+        },
+        opacity: {
+          value: 0.6,
+          random: true
+        },
+        size: {
+          value: { min: 1, max: 4 },
+          random: true
+        },
+        links: {
+          enable: true,
+          distance: 140,
+          color: "#ffffff",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: "none",
+          outMode: "bounce"
+        }
+      },
+      detectRetina: true
+    });
+  </script>
+</body>
+</html>
