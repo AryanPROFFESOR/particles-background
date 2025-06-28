@@ -9,8 +9,7 @@
       padding: 0;
       height: 100%;
       font-family: 'Arial', sans-serif;
-      background: #f8f8f4;
-      overflow: hidden; /* Prevent scrolling */
+      overflow: hidden; /* prevent scroll */
     }
     nav {
       width: 100%;
@@ -22,8 +21,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      border-bottom: 1px solid #ddd;
-      z-index: 100;
+      z-index: 10; /* stays above particles */
     }
     nav .logo {
       font-weight: bold;
@@ -36,7 +34,6 @@
       padding: 0;
     }
     nav ul li {
-      position: relative;
       margin-left: 20px;
     }
     nav ul li a {
@@ -49,69 +46,52 @@
     nav ul li a:hover {
       color: #666;
     }
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: black;
-      margin: 4px 0;
-    }
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       nav ul {
-        display: none;
         flex-direction: column;
         width: 100%;
       }
-      nav.active ul {
-        display: flex;
-        background: white;
-      }
       nav ul li {
-        margin: 0;
-      }
-      .menu-toggle {
-        display: flex;
+        margin-left: 0;
       }
     }
-    #content {
-      position: absolute;
-      top: 60px; /* adjust to navbar height */
+    #particles-js {
+      position: fixed;
+      top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% - 60px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      height: 100%;
+      z-index: -1;
+    }
+    #page-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: black;
       font-size: 48px;
-      color: #333;
       text-align: center;
-      background: transparent;
-      overflow: hidden;
+      z-index: 5; /* above particles but below nav */
+      pointer-events: none; /* so clicks pass through */
     }
   </style>
 </head>
 <body>
   <nav>
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
     <div class="logo">HMG Lab</div>
     <ul>
-      <li><a href="#" data-page="home">Home</a></li>
-      <li><a href="#" data-page="people">People</a></li>
-      <li><a href="#" data-page="research">Research</a></li>
+      <li><a href="#" data-page="Home">Home</a></li>
+      <li><a href="#" data-page="People">People</a></li>
+      <li><a href="#" data-page="Research">Research</a></li>
     </ul>
   </nav>
 
-  <div id="content">Welcome to HMG Lab</div>
-
-  <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+  <div id="particles-js"></div>
+  <div id="page-text">Home</div>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
@@ -140,38 +120,16 @@
       "retina_detect": true
     });
 
-    const menuToggle = document.getElementById('menu-toggle');
-    const nav = document.querySelector('nav');
-
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-
-    const content = document.getElementById('content');
     const links = document.querySelectorAll('nav ul li a');
+    const pageText = document.getElementById('page-text');
 
     links.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const page = link.getAttribute('data-page');
-        loadContent(page);
-        if (nav.classList.contains('active')) {
-          nav.classList.remove('active');
-        }
+        pageText.textContent = page;
       });
     });
-
-    function loadContent(page) {
-      if (page === "home") {
-        content.textContent = "Home";
-      } else if (page === "people") {
-        content.textContent = "People";
-      } else if (page === "research") {
-        content.textContent = "Research";
-      } else {
-        content.textContent = "Page not found";
-      }
-    }
   </script>
 </body>
 </html>
