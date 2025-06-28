@@ -2,107 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Particle Background</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: #0d0d0d;
       overflow: hidden;
       height: 100%;
+      width: 100%;
+      background-color: #f9f5ed; /* Light ivory / creamy background */
     }
-
-    #tsparticles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
 <body>
-  <div id="tsparticles"></div>
+  <div id="particles-js"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    tsParticles.load("tsparticles", {
-      background: {
-        color: {
-          value: "#0d0d0d"
-        }
-      },
-      fpsLimit: 60,
-      interactivity: {
-        events: {
-          onHover: {
-            enable: true,
-            mode: "trail"
-          },
-          onClick: {
-            enable: true,
-            mode: "push"
-          },
-          resize: true
-        },
-        modes: {
-          trail: {
-            delay: 0.1,
-            quantity: 1,
-            particles: {
-              color: { value: ["#00ffe7", "#00bfff", "#ff4fe2"] },
-              move: {
-                speed: 3,
-                direction: "none",
-                outMode: "bounce"
-              },
-              size: { value: 3 },
-              opacity: { value: 1 }
-            }
-          },
-          push: { quantity: 4 }
-        }
-      },
-      particles: {
-        number: {
-          value: 80,
-          density: {
-            enable: true,
-            area: 1000
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
           }
         },
-        color: {
-          value: ["#00ffe7", "#00bfff", "#ff4fe2"]
+        "color": {
+          "value": "#000000"  // Black particles
         },
-        shape: {
-          type: "circle"
+        "shape": {
+          "type": "circle"
         },
-        opacity: {
-          value: 0.6,
-          random: true
+        "opacity": {
+          "value": 0.5
         },
-        size: {
-          value: { min: 1, max: 4 },
-          random: true
+        "size": {
+          "value": 3
         },
-        links: {
-          enable: true,
-          distance: 140,
-          color: "#ffffff",
-          opacity: 0.4,
-          width: 1
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#000000",  // Black connecting lines
+          "opacity": 0.4,
+          "width": 1
         },
-        move: {
-          enable: true,
-          speed: 1.5,
-          direction: "none",
-          outMode: "bounce"
+        "move": {
+          "enable": true,
+          "speed": 2
         }
       },
-      detectRetina: true
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          }
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 0.6
+            }
+          },
+          "push": {
+            "particles_nb": 4
+          }
+        }
+      },
+      "retina_detect": true
     });
   </script>
 </body>
