@@ -10,7 +10,7 @@
       height: 100%;
       font-family: 'Arial', sans-serif;
       background: #f8f8f4;
-      scroll-behavior: smooth;
+      overflow: hidden; /* Prevent scrolling */
     }
     nav {
       width: 100%;
@@ -24,7 +24,6 @@
       padding: 10px 20px;
       border-bottom: 1px solid #ddd;
       z-index: 100;
-      transition: all 0.3s ease;
     }
     nav .logo {
       font-weight: bold;
@@ -43,38 +42,13 @@
     nav ul li a {
       text-decoration: none;
       color: black;
-      transition: color 0.3s;
       padding: 8px 12px;
       display: block;
+      transition: color 0.3s;
     }
     nav ul li a:hover {
       color: #666;
     }
-
-    /* Dropdown styles */
-    nav ul li ul {
-      display: none;
-      position: absolute;
-      top: 40px;
-      left: 0;
-      background: white;
-      padding: 0;
-      border: 1px solid #ddd;
-      min-width: 150px;
-    }
-    nav ul li:hover > ul {
-      display: block;
-    }
-    nav ul li ul li {
-      margin: 0;
-    }
-    nav ul li ul li a {
-      padding: 10px;
-    }
-    nav ul li ul li a:hover {
-      background: #f0f0f0;
-    }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -99,32 +73,24 @@
       nav ul li {
         margin: 0;
       }
-      nav ul li ul {
-        position: static;
-        border: none;
-      }
-      nav ul li:hover > ul {
-        display: none;
-      }
-      nav.active ul li ul {
-        display: none;
-      }
-      nav.active ul li.active ul {
-        display: flex;
-        flex-direction: column;
-      }
       .menu-toggle {
         display: flex;
       }
     }
-
-    section {
-      height: 100vh;
+    #content {
+      position: absolute;
+      top: 60px; /* adjust to navbar height */
+      left: 0;
+      width: 100%;
+      height: calc(100% - 60px);
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 48px;
       color: #333;
+      text-align: center;
+      background: transparent;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -137,29 +103,13 @@
     </div>
     <div class="logo">HMG Lab</div>
     <ul>
-      <li><a href="#section1">Home</a>
-        <ul>
-          <li><a href="#section1a">Sub 1A</a></li>
-          <li><a href="#section1b">Sub 1B</a></li>
-        </ul>
-      </li>
-      <li><a href="#section2">People</a>
-        <ul>
-          <li><a href="#section2a">Faculty</a></li>
-          <li><a href="#section2b">Students</a></li>
-        </ul>
-      </li>
-      <li><a href="#section3">Research</a></li>
+      <li><a href="#" data-page="home">Home</a></li>
+      <li><a href="#" data-page="people">People</a></li>
+      <li><a href="#" data-page="research">Research</a></li>
     </ul>
   </nav>
 
-  <section id="section1">Home</section>
-  <section id="section1a">Home Subsection A</section>
-  <section id="section1b">Home Subsection B</section>
-  <section id="section2">People</section>
-  <section id="section2a">Faculty</section>
-  <section id="section2b">Students</section>
-  <section id="section3">Research</section>
+  <div id="content">Welcome to HMG Lab</div>
 
   <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
 
@@ -192,22 +142,36 @@
 
     const menuToggle = document.getElementById('menu-toggle');
     const nav = document.querySelector('nav');
-    const navItems = nav.querySelectorAll('ul > li');
 
     menuToggle.addEventListener('click', () => {
       nav.classList.toggle('active');
     });
 
-    // For mobile: open submenus on click
-    navItems.forEach(item => {
-      item.addEventListener('click', e => {
-        if (window.innerWidth <= 768) {
-          e.stopPropagation();
-          navItems.forEach(i => i.classList.remove('active'));
-          item.classList.toggle('active');
+    const content = document.getElementById('content');
+    const links = document.querySelectorAll('nav ul li a');
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const page = link.getAttribute('data-page');
+        loadContent(page);
+        if (nav.classList.contains('active')) {
+          nav.classList.remove('active');
         }
       });
     });
+
+    function loadContent(page) {
+      if (page === "home") {
+        content.textContent = "Home";
+      } else if (page === "people") {
+        content.textContent = "People";
+      } else if (page === "research") {
+        content.textContent = "Research";
+      } else {
+        content.textContent = "Page not found";
+      }
+    }
   </script>
 </body>
 </html>
