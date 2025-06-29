@@ -8,6 +8,7 @@
 html, body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
+  background-color: #e6e8ed; /* your screenshot background */
   overflow-x: hidden;
 }
 
@@ -25,25 +26,25 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid #333;
   z-index: 100;
-  transition: background 0.3s ease;
 }
 
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 15px 30px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 22px;
-  color: #333;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000;
+  letter-spacing: 0.5px;
 }
 
 .nav-links {
@@ -52,35 +53,35 @@ nav {
 }
 
 .nav-links li {
-  margin-left: 25px;
+  margin-left: 20px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s, transform 0.3s;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.3s;
 }
 
 .nav-links a:hover {
   color: #0077ff;
-  transform: translateY(-2px);
 }
 
 .content {
   padding-top: 120px;
   text-align: center;
-  color: #333;
-  min-height: 100vh;
+  color: #000;
 }
 
 .content h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 20px;
 }
 
 .content p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   max-width: 600px;
   margin: 0 auto;
+  line-height: 1.6;
 }
