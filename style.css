@@ -1,14 +1,8 @@
-/* Reset */
-* {
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
   font-family: 'Roboto', sans-serif;
-  background-color: #e6e8ed; /* your screenshot background */
+  background: #e6e8ed;
   overflow-x: hidden;
 }
 
@@ -17,18 +11,15 @@ html, body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  top: 0;
-  left: 0;
 }
 
 nav {
-  width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.85);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid #333;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .nav-container {
@@ -43,8 +34,6 @@ nav {
 .logo {
   font-weight: 600;
   font-size: 18px;
-  color: #000;
-  letter-spacing: 0.5px;
 }
 
 .nav-links {
@@ -60,7 +49,6 @@ nav {
   text-decoration: none;
   color: #000;
   font-size: 14px;
-  font-weight: 400;
   transition: color 0.3s;
 }
 
@@ -69,19 +57,18 @@ nav {
 }
 
 .content {
-  padding-top: 120px;
+  margin-top: 120px;
   text-align: center;
   color: #000;
 }
 
 .content h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .content p {
   font-size: 1rem;
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.6;
 }
