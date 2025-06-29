@@ -5,68 +5,56 @@ tsParticles.load("tsparticles", {
   },
   particles: {
     number: {
-      value: 100,
+      value: 80,
       density: {
         enable: true,
         area: 800
       }
     },
     color: {
-      value: "#555555"
+      value: "#333333"
     },
     shape: {
       type: "circle"
     },
     opacity: {
-      value: 0.5,
-      random: true
+      value: 0.5
     },
     size: {
-      value: { min: 1, max: 5 },
-      random: true
+      value: { min: 1, max: 3 }
     },
     links: {
       enable: true,
-      distance: 150,
-      color: "#555555",
-      opacity: 0.4,
+      distance: 130,
+      color: "#333333",
+      opacity: 0.3,
       width: 1
     },
     move: {
       enable: true,
-      speed: 2,
+      speed: 0.8, /* slow and smooth */
       direction: "none",
-      random: false,
-      straight: false,
       outModes: {
         default: "bounce"
-      },
-      attract: {
-        enable: false
       }
-    },
-    collisions: {
-      enable: true
     }
   },
   interactivity: {
     events: {
       onHover: {
-        enable: true,
-        mode: "repulse"
+        enable: false /* no repulse on hover */
       },
       onClick: {
         enable: true,
-        mode: "push"
+        mode: "trail"
       },
       resize: true
     },
     modes: {
-      repulse: {
-        distance: 120
-      },
-      push: {
-        quantity: 4
+      trail: {
+        delay: 0.005,
+        quantity: 4,
+        pauseOnStop: false
       }
     }
   },
