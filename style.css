@@ -1,17 +1,16 @@
-/* Reset default margins and box sizing */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html {
+html, body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 }
 
-/* Particles background setup */
 #particles-js {
   position: fixed;
   width: 100%;
@@ -21,7 +20,6 @@ body, html {
   left: 0;
 }
 
-/* Navbar styling */
 nav {
   width: 100%;
   position: fixed;
@@ -30,6 +28,7 @@ nav {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   z-index: 100;
+  transition: background 0.3s ease;
 }
 
 .nav-container {
@@ -43,7 +42,7 @@ nav {
 
 .logo {
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
   color: #333;
 }
 
@@ -68,38 +67,20 @@ nav {
   transform: translateY(-2px);
 }
 
-/* Main content styling */
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.content {
+  padding-top: 120px;
   text-align: center;
-  height: 100vh;
-  padding-top: 100px;
   color: #333;
+  min-height: 100vh;
 }
 
-main h1 {
-  font-size: 56px;
-  margin-bottom: 15px;
-  animation: fadeInDown 1s ease-out;
+.content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
-main p {
-  font-size: 20px;
+.content p {
+  font-size: 1.2rem;
   max-width: 600px;
-  line-height: 1.6;
-  animation: fadeInUp 1.5s ease-out;
-}
-
-/* Simple fade animations */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  margin: 0 auto;
 }
