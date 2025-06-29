@@ -1,67 +1,74 @@
-particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 80,
-      "density": {
-        "enable": true,
-        "value_area": 800
+tsParticles.load("tsparticles", {
+  fpsLimit: 60,
+  background: {
+    color: "transparent"
+  },
+  particles: {
+    number: {
+      value: 100,
+      density: {
+        enable: true,
+        area: 800
       }
     },
-    "color": {
-      "value": "#555555"
+    color: {
+      value: "#555555"
     },
-    "shape": {
-      "type": "circle"
+    shape: {
+      type: "circle"
     },
-    "opacity": {
-      "value": 0.5,
-      "random": true
+    opacity: {
+      value: 0.5,
+      random: true
     },
-    "size": {
-      "value": 3,
-      "random": true
+    size: {
+      value: { min: 1, max: 5 },
+      random: true
     },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#555555",
-      "opacity": 0.4,
-      "width": 1
+    links: {
+      enable: true,
+      distance: 150,
+      color: "#555555",
+      opacity: 0.4,
+      width: 1
     },
-    "move": {
-      "enable": true,
-      "speed": 3,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "attract": {
-        "enable": false
+    move: {
+      enable: true,
+      speed: 2,
+      direction: "none",
+      random: false,
+      straight: false,
+      outModes: {
+        default: "bounce"
+      },
+      attract: {
+        enable: false
+      }
+    },
+    collisions: {
+      enable: true
+    }
+  },
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: "repulse"
+      },
+      onClick: {
+        enable: true,
+        mode: "push"
+      },
+      resize: true
+    },
+    modes: {
+      repulse: {
+        distance: 120
+      },
+      push: {
+        quantity: 4
       }
     }
   },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "repulse"  /* This makes them react to cursor */
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "repulse": {
-        "distance": 100,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      }
-    }
-  },
-  "retina_detect": true
+  detectRetina: true
 });
