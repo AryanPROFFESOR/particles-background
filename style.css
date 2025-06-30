@@ -25,31 +25,29 @@ header {
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
     display: flex;
+    flex-wrap: wrap; /* Allow wrap instead of overflow */
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10;
     transition: background 0.3s ease;
-    overflow-x: auto;
 }
 
 header .logo {
-    flex-shrink: 0;
     font-family: 'Oswald', sans-serif;
     font-size: 22px;
     font-weight: 700;
-    margin-right: 20px;
+    flex-shrink: 0;
 }
 
 header nav {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: flex-end;
 }
 
 header nav a {
-    flex-shrink: 0;
     margin-left: 15px;
     text-decoration: none;
     color: #333;
@@ -61,15 +59,6 @@ header nav a {
 header nav a:hover {
     color: #007BFF;
     transform: scale(1.05);
-}
-
-/* Hide scrollbar in nav on most browsers */
-header nav::-webkit-scrollbar {
-    display: none;
-}
-header nav {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 /* Main content */
@@ -120,5 +109,12 @@ main p {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Make sure nav links do not cause overflow on small screens */
+@media (max-width: 768px) {
+    header nav a {
+        margin: 8px 10px 0 0;
     }
 }
