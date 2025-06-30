@@ -27,29 +27,49 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 60px;
+    padding: 15px 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10;
     transition: background 0.3s ease;
+    overflow-x: auto;
 }
 
 header .logo {
+    flex-shrink: 0;
     font-family: 'Oswald', sans-serif;
     font-size: 22px;
     font-weight: 700;
+    margin-right: 20px;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 header nav a {
-    margin-left: 20px;
+    flex-shrink: 0;
+    margin-left: 15px;
     text-decoration: none;
     color: #333;
     font-weight: 600;
     transition: color 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
 }
 
 header nav a:hover {
     color: #007BFF;
     transform: scale(1.05);
+}
+
+/* Hide scrollbar in nav on most browsers */
+header nav::-webkit-scrollbar {
+    display: none;
+}
+header nav {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Main content */
